@@ -23,8 +23,6 @@ The service receives text via the Wyoming protocol, splits it into sentences, sy
 | Variable         | Default                   | Required | Description                              |
 |------------------|---------------------------|----------|------------------------------------------|
 | `XAI_API_KEY`    | —                         | Yes      | xAI API key                              |
-| `DEFAULT_VOICE`  | `eve`                     | No       | Default voice (`eve`, `ara`, `leo`, `rex`, `sal`) |
-| `LANGUAGE`       | `auto`                    | No       | Default language code (`auto`, `en`, `ru`, …) |
 | `WYOMING_URI`    | `tcp://0.0.0.0:10600`     | No       | Address the Wyoming server listens on    |
 | `DEBUG`          | `false`                   | No       | Enable debug logging                     |
 | `CACHE_SIZE`     | `64`                      | No       | LRU cache size (0 = disabled)            |
@@ -38,10 +36,8 @@ Supported voices: see [xAI documentation](https://docs.x.ai/developers/model-cap
 ```bash
 docker run -d \
   --name wyoming-grok-tts \
-  -p 10200:10200 \
+  -p 10600:10600 \
   -e XAI_API_KEY=your_api_key_here \
-  -e DEFAULT_VOICE=eve \
-  -e LANGUAGE=auto \
   ghcr.io/eugene-reim/wyoming-grok-tts:latest
 ```
 
@@ -51,7 +47,7 @@ Build locally:
 docker build -t wyoming-grok-tts .
 docker run -d \
   --name wyoming-grok-tts \
-  -p 10200:10200 \
+  -p 10600:10600 \
   -e XAI_API_KEY=your_api_key_here \
   wyoming-grok-tts
 ```
@@ -64,11 +60,9 @@ services:
     image: ghcr.io/eugene-reim/wyoming-grok-tts:latest
     container_name: wyoming-grok-tts
     ports:
-      - "10200:10200"
+      - "10600:10600"
     environment:
       - XAI_API_KEY=${XAI_API_KEY}
-      - DEFAULT_VOICE=eve
-      - LANGUAGE=auto
       - CACHE_SIZE=64
     restart: unless-stopped
 ```
