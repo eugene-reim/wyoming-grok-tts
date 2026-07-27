@@ -336,7 +336,7 @@ class GrokTtsHandler(AsyncEventHandler):
                             installed=True,
                             version="1.0.0",
                             voices=VOICES,
-                            supports_synthesize_streaming=True,
+                            supports_synthesize_streaming=False,
                         )
                     ]
                 ).event()
