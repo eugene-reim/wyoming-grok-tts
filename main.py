@@ -33,7 +33,7 @@ URI = os.getenv("WYOMING_URI", "tcp://0.0.0.0:10600")
 DEBUG = os.getenv("DEBUG", "false").lower() in ("1", "true", "yes")
 CACHE_SIZE = int(os.getenv("CACHE_SIZE", "64"))  # 0 = disabled
 
-SAMPLE_RATE = 24000
+SAMPLE_RATE = 22050
 SAMPLE_WIDTH = 2
 CHANNELS = 1
 CHUNK_SIZE = 4096
